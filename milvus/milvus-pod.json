@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1772689752903,
+  "iteration": 1773208667634,
   "links": [],
   "panels": [
     {
@@ -1228,7 +1228,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(increase(milvus_proxy_cache_hit_count{namespace=\"$namespace\",cache_name=\"$cache_name\", cache_state=\"hit\"}[2m])) \n  by(cache_name, pod, node_id)\n/\nsum(increase(milvus_proxy_cache_hit_count{namespace=\"$namespace\", cache_name=\"$cache_name\",cache_state=\"hit\"}[2m])) \n  by(cache_name, pod, node_id)",
+          "expr": "sum(increase(milvus_proxy_cache_hit_count{namespace=\"$namespace\",cache_name=\"$cache_name\", cache_state=\"hit\"}[2m])) \n  by(cache_name, pod, node_id)",
           "hide": false,
           "interval": "",
           "legendFormat": "",
@@ -1873,7 +1873,7 @@
       }
     },
     {
-      "collapsed": false,
+      "collapsed": true,
       "datasource": null,
       "gridPos": {
         "h": 1,
@@ -1882,1194 +1882,1195 @@
         "y": 37
       },
       "id": 123155,
-      "panels": [],
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "Number of proxy nodes which has register with etcd",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 0,
+            "y": 38
+          },
+          "hiddenSeries": false,
+          "id": 123141,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.5",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "sum(milvus_rootcoord_proxy_num{instance=~\"$instance\", namespace=\"$namespace\",container=\"$container\",job=\"$job\"}) by (instance)",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "num",
+              "queryType": "randomWalk",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Proxy Node Num",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4353",
+              "format": "short",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4354",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "RootCoord stores pre-assigned timestamps in the metastore",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 8,
+            "y": 38
+          },
+          "hiddenSeries": false,
+          "id": 123340,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.5",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "milvus_rootcoord_timestamp_saved{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "tiestamp",
+              "queryType": "randomWalk",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Timestamp Saved",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4353",
+              "format": "short",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4354",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "The 99th percentile and average latency for rootcoord to finish synchronizing timestamp messages to all pchanels.",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 16,
+            "y": 38
+          },
+          "hiddenSeries": false,
+          "id": 123338,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.5",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "histogram_quantile(0.99,sum by (le, pod) (rate(milvus_rootcoord_sync_timetick_latency_bucket{job=\"$job\",namespace=\"$namespace\"}[2m])))",
+              "hide": true,
+              "interval": "",
+              "legendFormat": "p99-latency",
+              "queryType": "randomWalk",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "sum(\n  increase(milvus_rootcoord_sync_timetick_latency_sum{instance=~\"$instance\", namespace=\"$namespace\", job=\"$job\", container=~\"$container\"}[2m])\n)\n/\nsum(\n  increase(milvus_rootcoord_sync_timetick_latency_count{instance=~\"$instance\", namespace=\"$namespace\", job=\"$job\", container=~\"$container\"}[2m])\n)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "avg-latency",
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Produced Timetick Time Taken",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:161",
+              "format": "ms",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:162",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "The 99th percentile and average latency of DDL request over the last 2 minutes.",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 0,
+            "y": 44
+          },
+          "hiddenSeries": false,
+          "id": 123337,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.5",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "histogram_quantile(0.99, sum by (le, function_name) (rate(milvus_rootcoord_ddl_req_latency_bucket{instance=~\"$instance\", namespace=\"$namespace\"}[2m])))",
+              "interval": "",
+              "legendFormat": "p99-{{function_name}}",
+              "queryType": "randomWalk",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "sum(increase(milvus_rootcoord_ddl_req_latency_sum{instance=~\"$instance\", namespace=\"$namespace\"}[2m])) by (function_name) / sum(increase(milvus_rootcoord_ddl_req_latency_count{instance=~\"$instance\", namespace=\"$namespace\"}[2m])) by (function_name)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "avg-{{function_name}}",
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "DDL Request Latency",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:161",
+              "format": "short",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:162",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "The number of DML channels",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 8,
+            "y": 44
+          },
+          "hiddenSeries": false,
+          "id": 123345,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.5",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "sum(milvus_rootcoord_dml_channel_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "num",
+              "queryType": "randomWalk",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "DML Channel Num",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4353",
+              "format": "short",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4354",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "per-second increasing rate of DDL request",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 16,
+            "y": 44
+          },
+          "hiddenSeries": false,
+          "id": 123347,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.5",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "sum(increase(milvus_rootcoord_ddl_req_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (status, function_name)",
+              "interval": "",
+              "legendFormat": "{{function_name}}-{{status}}",
+              "queryType": "randomWalk",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "DDL Request Rate",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1456",
+              "format": "short",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1457",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "RoootCoord current latest timestamp",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 0,
+            "y": 50
+          },
+          "hiddenSeries": false,
+          "id": 123339,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.5",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "milvus_rootcoord_timestamp{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "tiestamp",
+              "queryType": "randomWalk",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Timestamp",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4353",
+              "format": "short",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4354",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "The number of Msgstream objects.",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 8,
+            "y": 50
+          },
+          "hiddenSeries": false,
+          "id": 123346,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.5",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "sum(milvus_rootcoord_msgstream_obj_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "num",
+              "queryType": "randomWalk",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Msgstream Num",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4353",
+              "format": "short",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4354",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "per-second increasing rate of IDs assigned by RootCoord",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 16,
+            "y": 50
+          },
+          "hiddenSeries": false,
+          "id": 123221,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.5",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "sum(increase(milvus_rootcoord_id_alloc_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120)",
+              "interval": "",
+              "legendFormat": "total",
+              "queryType": "randomWalk",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "ID Alloc Rate",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:1456",
+              "format": "short",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:1457",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "The number of partitions.",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 0,
+            "y": 56
+          },
+          "hiddenSeries": false,
+          "id": 123344,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.5",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "sum(milvus_rootcoord_partition_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "num",
+              "queryType": "randomWalk",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Partition Num",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4353",
+              "format": "short",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4354",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "The number of credential",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 8,
+            "y": 56
+          },
+          "hiddenSeries": false,
+          "id": 123343,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.5",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "sum(milvus_rootcoord_credential_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "num",
+              "queryType": "randomWalk",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Credential Num",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4353",
+              "format": "short",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4354",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "The number of collections.",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 16,
+            "y": 56
+          },
+          "hiddenSeries": false,
+          "id": 123342,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.5",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "exemplar": true,
+              "expr": "sum(milvus_rootcoord_collection_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "num",
+              "queryType": "randomWalk",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Collection Num",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:4353",
+              "format": "short",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "$$hashKey": "object:4354",
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        }
+      ],
       "title": "Root Coordinator",
       "type": "row"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "Number of proxy nodes which has register with etcd",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 0,
-        "y": 38
-      },
-      "hiddenSeries": false,
-      "id": 123141,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "sum(milvus_rootcoord_proxy_num{instance=~\"$instance\", namespace=\"$namespace\",container=\"$container\",job=\"$job\"}) by (app_kubernetes_io_instance)",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "num",
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Proxy Node Num",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:4353",
-          "format": "short",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:4354",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "RootCoord stores pre-assigned timestamps in the metastore",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 8,
-        "y": 38
-      },
-      "hiddenSeries": false,
-      "id": 123340,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "milvus_rootcoord_timestamp_saved{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "tiestamp",
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Timestamp Saved",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:4353",
-          "format": "short",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:4354",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "The 99th percentile and average latency for rootcoord to finish synchronizing timestamp messages to all pchanels.",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 16,
-        "y": 38
-      },
-      "hiddenSeries": false,
-      "id": 123338,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "histogram_quantile(0.99,sum by (le, pod) (rate(milvus_rootcoord_sync_timetick_latency_bucket{job=\"$job\",namespace=\"$namespace\"}[2m])))",
-          "hide": true,
-          "interval": "",
-          "legendFormat": "p99-latency",
-          "queryType": "randomWalk",
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "sum(\n  increase(milvus_rootcoord_sync_timetick_latency_sum{instance=~\"$instance\", namespace=\"$namespace\", job=\"$job\", container=~\"$container\"}[2m])\n)\n/\nsum(\n  increase(milvus_rootcoord_sync_timetick_latency_count{instance=~\"$instance\", namespace=\"$namespace\", job=\"$job\", container=~\"$container\"}[2m])\n)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "avg-latency",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Produced Timetick Time Taken",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:161",
-          "format": "ms",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:162",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "The 99th percentile and average latency of DDL request over the last 2 minutes.",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 0,
-        "y": 44
-      },
-      "hiddenSeries": false,
-      "id": 123337,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "histogram_quantile(0.99, sum by (le, function_name) (rate(milvus_rootcoord_ddl_req_latency_bucket{instance=~\"$instance\", namespace=\"$namespace\"}[2m])))",
-          "interval": "",
-          "legendFormat": "p99-{{function_name}}",
-          "queryType": "randomWalk",
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "sum(increase(milvus_rootcoord_ddl_req_latency_sum{instance=~\"$instance\", namespace=\"$namespace\"}[2m])) by (function_name) / sum(increase(milvus_rootcoord_ddl_req_latency_count{instance=~\"$instance\", namespace=\"$namespace\"}[2m])) by (function_name)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "avg-{{function_name}}",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "DDL Request Latency",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:161",
-          "format": "short",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:162",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "The number of DML channels",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 8,
-        "y": 44
-      },
-      "hiddenSeries": false,
-      "id": 123345,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "sum(milvus_rootcoord_dml_channel_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "num",
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "DML Channel Num",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:4353",
-          "format": "short",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:4354",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "per-second increasing rate of DDL request",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 16,
-        "y": 44
-      },
-      "hiddenSeries": false,
-      "id": 123347,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "sum(increase(milvus_rootcoord_ddl_req_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (status, function_name)",
-          "interval": "",
-          "legendFormat": "{{function_name}}-{{status}}",
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "DDL Request Rate",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:1456",
-          "format": "short",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1457",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "RoootCoord current latest timestamp",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 0,
-        "y": 50
-      },
-      "hiddenSeries": false,
-      "id": 123339,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "milvus_rootcoord_timestamp{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "tiestamp",
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Timestamp",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:4353",
-          "format": "short",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:4354",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "The number of Msgstream objects.",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 8,
-        "y": 50
-      },
-      "hiddenSeries": false,
-      "id": 123346,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "sum(milvus_rootcoord_msgstream_obj_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "num",
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Msgstream Num",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:4353",
-          "format": "short",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:4354",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "per-second increasing rate of IDs assigned by RootCoord",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 16,
-        "y": 50
-      },
-      "hiddenSeries": false,
-      "id": 123221,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "sum(increase(milvus_rootcoord_id_alloc_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120)",
-          "interval": "",
-          "legendFormat": "total",
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "ID Alloc Rate",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:1456",
-          "format": "short",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1457",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "The number of partitions.",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 0,
-        "y": 56
-      },
-      "hiddenSeries": false,
-      "id": 123344,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "sum(milvus_rootcoord_partition_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "num",
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Partition Num",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:4353",
-          "format": "short",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:4354",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "The number of credential",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 8,
-        "y": 56
-      },
-      "hiddenSeries": false,
-      "id": 123343,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "sum(milvus_rootcoord_credential_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "num",
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Credential Num",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:4353",
-          "format": "short",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:4354",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "The number of collections.",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 16,
-        "y": 56
-      },
-      "hiddenSeries": false,
-      "id": 123342,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "$datasource"
-          },
-          "exemplar": true,
-          "expr": "sum(milvus_rootcoord_collection_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "num",
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Collection Num",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:4353",
-          "format": "short",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:4354",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
     },
     {
       "collapsed": false,
@@ -3078,7 +3079,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 62
+        "y": 38
       },
       "id": 123246,
       "panels": [],
@@ -3102,7 +3103,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 63
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 123288,
@@ -3199,7 +3200,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 63
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 123294,
@@ -3308,7 +3309,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 63
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 123291,
@@ -3404,7 +3405,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 69
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 123292,
@@ -3500,7 +3501,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 69
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 123296,
@@ -3597,7 +3598,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 69
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 123313,
@@ -3705,7 +3706,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 75
+        "y": 51
       },
       "hiddenSeries": false,
       "id": 123297,
@@ -3802,7 +3803,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 75
+        "y": 51
       },
       "hiddenSeries": false,
       "id": 123298,
@@ -3900,7 +3901,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 81
+        "y": 57
       },
       "id": 123244,
       "panels": [],
@@ -3924,7 +3925,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 82
+        "y": 58
       },
       "hiddenSeries": false,
       "id": 123299,
@@ -4022,7 +4023,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 82
+        "y": 58
       },
       "hiddenSeries": false,
       "id": 123304,
@@ -4119,7 +4120,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 82
+        "y": 58
       },
       "hiddenSeries": false,
       "id": 123305,
@@ -4217,7 +4218,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 88
+        "y": 64
       },
       "hiddenSeries": false,
       "id": 123385,
@@ -4339,7 +4340,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 88
+        "y": 64
       },
       "hiddenSeries": false,
       "id": 123350,
@@ -4435,7 +4436,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 88
+        "y": 64
       },
       "hiddenSeries": false,
       "id": 123387,
@@ -4544,7 +4545,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 94
+        "y": 70
       },
       "hiddenSeries": false,
       "id": 123365,
@@ -4642,7 +4643,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 94
+        "y": 70
       },
       "hiddenSeries": false,
       "id": 123374,
@@ -4750,7 +4751,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 94
+        "y": 70
       },
       "hiddenSeries": false,
       "id": 123366,
@@ -4858,7 +4859,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 100
+        "y": 76
       },
       "hiddenSeries": false,
       "id": 123372,
@@ -4966,7 +4967,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 100
+        "y": 76
       },
       "hiddenSeries": false,
       "id": 123311,
@@ -5074,7 +5075,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 100
+        "y": 76
       },
       "hiddenSeries": false,
       "id": 123310,
@@ -5182,7 +5183,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 106
+        "y": 82
       },
       "hiddenSeries": false,
       "id": 123367,
@@ -5290,7 +5291,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 106
+        "y": 82
       },
       "hiddenSeries": false,
       "id": 123356,
@@ -5387,7 +5388,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 106
+        "y": 82
       },
       "hiddenSeries": false,
       "id": 123312,
@@ -5484,7 +5485,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 112
+        "y": 88
       },
       "hiddenSeries": false,
       "id": 123351,
@@ -5581,7 +5582,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 112
+        "y": 88
       },
       "hiddenSeries": false,
       "id": 123352,
@@ -5689,7 +5690,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 112
+        "y": 88
       },
       "hiddenSeries": false,
       "id": 123357,
@@ -5786,7 +5787,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 118
+        "y": 94
       },
       "hiddenSeries": false,
       "id": 123360,
@@ -5894,7 +5895,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 118
+        "y": 94
       },
       "hiddenSeries": false,
       "id": 123359,
@@ -6002,7 +6003,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 118
+        "y": 94
       },
       "hiddenSeries": false,
       "id": 123361,
@@ -6110,7 +6111,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 124
+        "y": 100
       },
       "hiddenSeries": false,
       "id": 123362,
@@ -6208,7 +6209,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 130
+        "y": 106
       },
       "id": 123172,
       "panels": [],
@@ -6232,7 +6233,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 131
+        "y": 107
       },
       "hiddenSeries": false,
       "id": 123207,
@@ -6329,7 +6330,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 131
+        "y": 107
       },
       "hiddenSeries": false,
       "id": 123267,
@@ -6426,7 +6427,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 131
+        "y": 107
       },
       "hiddenSeries": false,
       "id": 123269,
@@ -6523,7 +6524,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 137
+        "y": 113
       },
       "hiddenSeries": false,
       "id": 123382,
@@ -6620,7 +6621,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 137
+        "y": 113
       },
       "hiddenSeries": false,
       "id": 123394,
@@ -6725,7 +6726,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 137
+        "y": 113
       },
       "hiddenSeries": false,
       "id": 123396,
@@ -6830,7 +6831,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 143
+        "y": 119
       },
       "hiddenSeries": false,
       "id": 123395,
@@ -6927,7 +6928,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 143
+        "y": 119
       },
       "hiddenSeries": false,
       "id": 123397,
@@ -7024,7 +7025,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 143
+        "y": 119
       },
       "hiddenSeries": false,
       "id": 123398,
@@ -7121,7 +7122,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 149
+        "y": 125
       },
       "hiddenSeries": false,
       "id": 123399,
@@ -7218,7 +7219,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 149
+        "y": 125
       },
       "hiddenSeries": false,
       "id": 123400,
@@ -7305,7 +7306,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 155
+        "y": 131
       },
       "id": 123242,
       "panels": [],
@@ -7329,7 +7330,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 156
+        "y": 132
       },
       "hiddenSeries": false,
       "id": 123272,
@@ -7426,7 +7427,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 156
+        "y": 132
       },
       "hiddenSeries": false,
       "id": 123277,
@@ -7523,7 +7524,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 156
+        "y": 132
       },
       "hiddenSeries": false,
       "id": 123393,
@@ -7645,7 +7646,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 162
+        "y": 138
       },
       "hiddenSeries": false,
       "id": 123284,
@@ -7741,7 +7742,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 162
+        "y": 138
       },
       "hiddenSeries": false,
       "id": 123389,
@@ -7837,7 +7838,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 162
+        "y": 138
       },
       "hiddenSeries": false,
       "id": 123391,
@@ -7933,7 +7934,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 168
+        "y": 144
       },
       "hiddenSeries": false,
       "id": 123227,
@@ -8029,7 +8030,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 168
+        "y": 144
       },
       "hiddenSeries": false,
       "id": 123285,
@@ -8125,7 +8126,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 168
+        "y": 144
       },
       "hiddenSeries": false,
       "id": 123274,
@@ -8221,7 +8222,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 174
+        "y": 150
       },
       "hiddenSeries": false,
       "id": 123229,
@@ -8320,7 +8321,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 174
+        "y": 150
       },
       "hiddenSeries": false,
       "id": 123283,
@@ -8428,7 +8429,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 174
+        "y": 150
       },
       "hiddenSeries": false,
       "id": 123275,
@@ -8524,7 +8525,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 180
+        "y": 156
       },
       "hiddenSeries": false,
       "id": 123286,
@@ -8610,7 +8611,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 186
+        "y": 162
       },
       "id": 123157,
       "panels": [],
@@ -8634,7 +8635,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 187
+        "y": 163
       },
       "hiddenSeries": false,
       "id": 123202,
@@ -8730,7 +8731,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 187
+        "y": 163
       },
       "hiddenSeries": false,
       "id": 123204,
@@ -8823,7 +8824,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 187
+        "y": 163
       },
       "hiddenSeries": false,
       "id": 123206,
@@ -8917,7 +8918,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 193
+        "y": 169
       },
       "hiddenSeries": false,
       "id": 123135,
@@ -9007,7 +9008,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 193
+        "y": 169
       },
       "hiddenSeries": false,
       "id": 123133,
@@ -9099,7 +9100,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 193
+        "y": 169
       },
       "hiddenSeries": false,
       "id": 123125,
@@ -9189,7 +9190,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 199
+        "y": 175
       },
       "hiddenSeries": false,
       "id": 123137,
@@ -9280,7 +9281,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 199
+        "y": 175
       },
       "hiddenSeries": false,
       "id": 123131,
@@ -9369,7 +9370,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 199
+        "y": 175
       },
       "hiddenSeries": false,
       "id": 123127,
@@ -9460,7 +9461,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 205
+        "y": 181
       },
       "hiddenSeries": false,
       "id": 123129,
@@ -9551,7 +9552,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 205
+        "y": 181
       },
       "hiddenSeries": false,
       "id": 123211,
@@ -9642,7 +9643,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 205
+        "y": 181
       },
       "hiddenSeries": false,
       "id": 123216,
@@ -9733,7 +9734,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 211
+        "y": 187
       },
       "hiddenSeries": false,
       "id": 123213,
@@ -9824,7 +9825,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 211
+        "y": 187
       },
       "hiddenSeries": false,
       "id": 123215,
@@ -9915,7 +9916,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 211
+        "y": 187
       },
       "hiddenSeries": false,
       "id": 123219,
@@ -10006,7 +10007,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 217
+        "y": 193
       },
       "hiddenSeries": false,
       "id": 123217,
@@ -10103,7 +10104,7 @@
         "h": 6,
         "w": 8,
         "x": 8,
-        "y": 217
+        "y": 193
       },
       "hiddenSeries": false,
       "id": 123218,
@@ -10194,7 +10195,7 @@
         "h": 6,
         "w": 8,
         "x": 16,
-        "y": 217
+        "y": 193
       },
       "hiddenSeries": false,
       "id": 123375,
@@ -10289,7 +10290,7 @@
         "h": 6,
         "w": 8,
         "x": 0,
-        "y": 223
+        "y": 199
       },
       "hiddenSeries": false,
       "id": 123376,
@@ -10433,10 +10434,18 @@
         "current": {
           "selected": true,
           "text": [
-            "All"
+            "10.42.0.166:9091",
+            "10.42.0.167:9091",
+            "10.42.0.168:9091",
+            "10.42.0.170:9091",
+            "10.42.0.171:9091"
           ],
           "value": [
-            "$__all"
+            "10.42.0.166:9091",
+            "10.42.0.167:9091",
+            "10.42.0.168:9091",
+            "10.42.0.170:9091",
+            "10.42.0.171:9091"
           ]
         },
         "datasource": null,
@@ -10468,10 +10477,10 @@
         "current": {
           "selected": true,
           "text": [
-            "All"
+            "health_check_test"
           ],
           "value": [
-            "$__all"
+            "health_check_test"
           ]
         },
         "datasource": null,
@@ -10536,7 +10545,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "milvus-cluster-stats"
           ],
@@ -10570,19 +10579,14 @@
             "value": "kube-state-metrics"
           },
           {
-            "selected": false,
-            "text": "milvus-standalone-stats",
-            "value": "milvus-standalone-stats"
+            "selected": true,
+            "text": "milvus-cluster-stats",
+            "value": "milvus-cluster-stats"
           },
           {
             "selected": false,
             "text": "panopticon",
             "value": "panopticon"
-          },
-          {
-            "selected": true,
-            "text": "milvus-cluster-stats",
-            "value": "milvus-cluster-stats"
           }
         ],
         "query": {
@@ -10602,7 +10606,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -10627,8 +10631,68 @@
           },
           {
             "selected": false,
+            "text": "5",
+            "value": "5"
+          },
+          {
+            "selected": false,
+            "text": "2",
+            "value": "2"
+          },
+          {
+            "selected": false,
+            "text": "3",
+            "value": "3"
+          },
+          {
+            "selected": false,
+            "text": "1",
+            "value": "1"
+          },
+          {
+            "selected": false,
             "text": "4",
             "value": "4"
+          },
+          {
+            "selected": false,
+            "text": "-1",
+            "value": "-1"
+          },
+          {
+            "selected": false,
+            "text": "0",
+            "value": "0"
+          },
+          {
+            "selected": false,
+            "text": "7",
+            "value": "7"
+          },
+          {
+            "selected": false,
+            "text": "6",
+            "value": "6"
+          },
+          {
+            "selected": false,
+            "text": "8",
+            "value": "8"
+          },
+          {
+            "selected": false,
+            "text": "9",
+            "value": "9"
+          },
+          {
+            "selected": false,
+            "text": "10",
+            "value": "10"
+          },
+          {
+            "selected": false,
+            "text": "11",
+            "value": "11"
           }
         ],
         "query": {
@@ -10710,12 +10774,12 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
-            "All"
+            "milvus"
           ],
           "value": [
-            "$__all"
+            "milvus"
           ]
         },
         "datasource": null,
@@ -10752,6 +10816,11 @@
             "selected": false,
             "text": "wait",
             "value": "wait"
+          },
+          {
+            "selected": false,
+            "text": "etcd",
+            "value": "etcd"
           },
           {
             "selected": true,
@@ -10807,7 +10876,7 @@
     "type": "timepicker"
   },
   "timezone": "browser",
-  "title": "milvus",
+  "title": "milvus_pod",
   "uid": "uLf5cJ3Gz",
-  "version": 16
+  "version": 18
 }

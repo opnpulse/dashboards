@@ -23,7 +23,7 @@
   "gnetId": 9628,
   "graphTooltip": 0,
   "id": 36,
-  "iteration": 1772684115827,
+  "iteration": 1773208670660,
   "links": [],
   "panels": [
     {
@@ -2808,8 +2808,8 @@
       {
         "current": {
           "selected": false,
-          "text": "",
-          "value": ""
+          "text": "Prometheus",
+          "value": "Prometheus"
         },
         "description": null,
         "error": null,
@@ -2830,15 +2830,13 @@
         "allValue": "\".+\"",
         "current": {
           "selected": false,
-          "text": "cert-manager",
-          "value": "cert-manager"
+          "text": "kubedb",
+          "value": "kubedb"
         },
         "datasource": "${datasource}",
         "definition": "label_values(kube_namespace_created,namespace)",
         "description": null,
-        "error": {
-          "message": "Datasource named  was not found"
-        },
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Namespace",
@@ -2862,9 +2860,13 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": [
+            "milvus-cluster"
+          ],
+          "value": [
+            "milvus-cluster"
+          ]
         },
         "datasource": "${datasource}",
         "definition": "label_values(kubedb_com_milvus_status_phase{namespace=~\"$namespace\"},app)",
