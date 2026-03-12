@@ -3828,7 +3828,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(((sum by (host_ip) (label_replace(rate(node_disk_read_time_seconds_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) + sum by (host_ip) (label_replace(rate(node_disk_write_time_seconds_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))) / clamp_min((sum by (host_ip) (label_replace(rate(node_disk_reads_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) + sum by (host_ip) (label_replace(rate(node_disk_writes_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))), 0.001)) * 1000) * on (host_ip) group_left(pod) max by (host_ip, pod) (kube_pod_info{namespace=\"demo\", pod=~\"$node_name\"})",
+          "expr": "(((sum by (host_ip) (label_replace(rate(node_disk_read_time_seconds_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) + sum by (host_ip) (label_replace(rate(node_disk_write_time_seconds_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))) / clamp_min((sum by (host_ip) (label_replace(rate(node_disk_reads_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) + sum by (host_ip) (label_replace(rate(node_disk_writes_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))), 0.001)) * 1000) * on (host_ip) group_left(pod) max by (host_ip, pod) (kube_pod_info{pod=~\"$node_name\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
@@ -3926,7 +3926,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "((sum by (host_ip) (label_replace(rate(node_disk_io_time_seconds_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) / clamp_min((sum by (host_ip) (label_replace(rate(node_disk_reads_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) + sum by (host_ip) (label_replace(rate(node_disk_writes_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))), 0.001)) * 1000) * on (host_ip) group_left(pod) max by (host_ip, pod) (kube_pod_info{namespace=\"demo\", pod=~\"$node_name\"})",
+          "expr": "((sum by (host_ip) (label_replace(rate(node_disk_io_time_seconds_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) / clamp_min((sum by (host_ip) (label_replace(rate(node_disk_reads_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) + sum by (host_ip) (label_replace(rate(node_disk_writes_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))), 0.001)) * 1000) * on (host_ip) group_left(pod) max by (host_ip, pod) (kube_pod_info{pod=~\"$node_name\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
@@ -4128,7 +4128,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(sum by (host_ip) (label_replace(node_disk_io_now{device!~\"loop.*|ram.*|fd.*\"}, \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))) * on (host_ip) group_left(pod) max by (host_ip, pod) (kube_pod_info{namespace=\"demo\", pod=~\"$node_name\"})",
+          "expr": "(sum by (host_ip) (label_replace(node_disk_io_now{device!~\"loop.*|ram.*|fd.*\"}, \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))) * on (host_ip) group_left(pod) max by (host_ip, pod) (kube_pod_info{pod=~\"$node_name\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
@@ -4227,7 +4227,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "((sum by (host_ip) (label_replace(rate(node_disk_io_time_weighted_seconds_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) / clamp_min((sum by (host_ip) (label_replace(rate(node_disk_reads_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) + sum by (host_ip) (label_replace(rate(node_disk_writes_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))), 0.001)) * 1000) * on (host_ip) group_left(pod) max by (host_ip, pod) (kube_pod_info{namespace=\"demo\", pod=~\"$node_name\"})",
+          "expr": "((sum by (host_ip) (label_replace(rate(node_disk_io_time_weighted_seconds_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) / clamp_min((sum by (host_ip) (label_replace(rate(node_disk_reads_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) + sum by (host_ip) (label_replace(rate(node_disk_writes_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))), 0.001)) * 1000) * on (host_ip) group_left(pod) max by (host_ip, pod) (kube_pod_info{pod=~\"$node_name\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",

@@ -186,7 +186,7 @@
           "calcs": [
             "mean"
           ],
-          "fields": "/^mode$/",
+          "fields": "",
           "values": false
         },
         "text": {
@@ -199,7 +199,7 @@
         {
           "exemplar": true,
           "expr": "kubedb_com_hanadb_info{namespace=\"$namespace\", app=\"$app\"}",
-          "format": "table",
+          "format": "time_series",
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
@@ -268,7 +268,7 @@
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "",
+          "fields": "/^mode$/",
           "values": false
         },
         "text": {},
@@ -278,7 +278,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_hanadb_info{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_hanadb_mode{namespace=\"$namespace\", app=\"$app\"} == 1",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2433,7 +2433,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubelet_volume_stats_capacity_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}",
+          "expr": "kubelet_volume_stats_capacity_bytes{job=\"kubelet\",namespace=~\"$namespace\"} * on(namespace,persistentvolumeclaim) group_left(pod) max by(namespace,persistentvolumeclaim,pod) (kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2517,7 +2517,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(kubelet_volume_stats_used_bytes / on(persistentvolumeclaim) group_left(pod) (kubelet_volume_stats_capacity_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}) )* 100",
+          "expr": "100 * ((kubelet_volume_stats_used_bytes{job=\"kubelet\",namespace=~\"$namespace\"} / on(namespace,persistentvolumeclaim) kubelet_volume_stats_capacity_bytes{job=\"kubelet\",namespace=~\"$namespace\"}) * on(namespace,persistentvolumeclaim) group_left(pod) max by(namespace,persistentvolumeclaim,pod) (kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}))",
           "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -2601,7 +2601,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(kubelet_volume_stats_used_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}) ",
+          "expr": "kubelet_volume_stats_used_bytes{job=\"kubelet\",namespace=~\"$namespace\"} * on(namespace,persistentvolumeclaim) group_left(pod) max by(namespace,persistentvolumeclaim,pod) (kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"})",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
@@ -2839,9 +2839,9 @@
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": "default",
-          "value": "default"
+          "selected": false,
+          "text": "Prometheus",
+          "value": "Prometheus"
         },
         "description": null,
         "error": null,
