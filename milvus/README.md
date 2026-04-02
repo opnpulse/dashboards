@@ -3,7 +3,7 @@
 There are two dashboards to monitor Milvus databases managed by KubeDB.
 
 - KubeDB / Milvus / Summary: Shows overall summary of the Milvus instance.
-- KubeDB / Milvus / Pod: Shows individual pod-level information.
+- KubeDB / Milvus / Database: Shows Milvus internal metrics for an instance.
 
 Note: These dashboards are developed in **Grafana version 7.5.5**
 
@@ -99,7 +99,7 @@ If you followed the instruction properly, you should see the Milvus Grafana dash
 ![summary-4.png](images/summary-4.png)
 ![summary-5.png](images/summary-5.png)
 
-####  KubeDB / Milvus / Pod
+####  KubeDB / Milvus / Database
 ![Proxy-1.png](images/Proxy-1.png)
 ![Proxy-2.png](images/Proxy-2.png)
 ![RootCoord-1.png](images/RootCoord-1.png)
