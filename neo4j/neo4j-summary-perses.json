@@ -9,7 +9,7 @@
   },
   "spec": {
     "display": {
-      "name": "check"
+      "name": "KubeDB / Neo4j / Summary"
     },
     "variables": [
       {

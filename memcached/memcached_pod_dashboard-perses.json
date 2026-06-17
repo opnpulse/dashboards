@@ -9,7 +9,7 @@
   },
   "spec": {
     "display": {
-      "name": "KubeDB / Memcache / Pod"
+      "name": "KubeDB / Memcached / Pod"
     },
     "variables": [
       {

@@ -10876,7 +10876,7 @@
     "type": "timepicker"
   },
   "timezone": "browser",
-  "title": "milvus_pod",
+  "title": "KubeDB / Milvus / Database",
   "uid": "uLf5cJ3Gz",
   "version": 18
 }

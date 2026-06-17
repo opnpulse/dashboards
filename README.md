@@ -1,1 +1,1 @@
-# Grafana Dashboards
+# Grafana & Perses Dashboards

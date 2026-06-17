@@ -9,7 +9,7 @@
   },
   "spec": {
     "display": {
-      "name": "New dashboard Copy"
+      "name": "KubeDB / Neo4j / Database"
     },
     "variables": [
       {

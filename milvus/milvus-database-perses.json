@@ -9,7 +9,7 @@
   },
   "spec": {
     "display": {
-      "name": "milvus_pod"
+      "name": "KubeDB / Milvus / Database"
     },
     "variables": [
       {

@@ -9,7 +9,7 @@
   },
   "spec": {
     "display": {
-      "name": "KubeDb / Hazelcast / Database"
+      "name": "KubeDB / Hazelcast / Database"
     },
     "variables": [
       {

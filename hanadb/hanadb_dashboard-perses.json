@@ -9,7 +9,7 @@
   },
   "spec": {
     "display": {
-      "name": "SAP HANA"
+      "name": "KubeDB / HanaDB / Database"
     },
     "variables": [
       {
