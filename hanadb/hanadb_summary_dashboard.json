@@ -2436,7 +2436,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubelet_volume_stats_capacity_bytes{job=\"kubelet\",namespace=~\"$namespace\"} * on(namespace,persistentvolumeclaim) group_left(pod) max by(namespace,persistentvolumeclaim,pod) (kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"})",
+          "expr": "kubelet_volume_stats_capacity_bytes{namespace=~\"$namespace\"} * on(namespace,persistentvolumeclaim) group_left(pod) max by(namespace,persistentvolumeclaim,pod) (kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"})",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2520,7 +2520,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "100 * ((kubelet_volume_stats_used_bytes{job=\"kubelet\",namespace=~\"$namespace\"} / on(namespace,persistentvolumeclaim) kubelet_volume_stats_capacity_bytes{job=\"kubelet\",namespace=~\"$namespace\"}) * on(namespace,persistentvolumeclaim) group_left(pod) max by(namespace,persistentvolumeclaim,pod) (kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}))",
+          "expr": "100 * ((kubelet_volume_stats_used_bytes{namespace=~\"$namespace\"} / on(namespace,persistentvolumeclaim) kubelet_volume_stats_capacity_bytes{namespace=~\"$namespace\"}) * on(namespace,persistentvolumeclaim) group_left(pod) max by(namespace,persistentvolumeclaim,pod) (kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}))",
           "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -2604,7 +2604,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubelet_volume_stats_used_bytes{job=\"kubelet\",namespace=~\"$namespace\"} * on(namespace,persistentvolumeclaim) group_left(pod) max by(namespace,persistentvolumeclaim,pod) (kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"})",
+          "expr": "kubelet_volume_stats_used_bytes{namespace=~\"$namespace\"} * on(namespace,persistentvolumeclaim) group_left(pod) max by(namespace,persistentvolumeclaim,pod) (kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"})",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",

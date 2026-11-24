@@ -2475,7 +2475,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubelet_volume_stats_capacity_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+|shard\\\\d+-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+)|configsvr-\\\\d+|mongos-\\\\d+)\",namespace=~\"$namespace\"}",
+          "expr": "kubelet_volume_stats_capacity_bytes + on(namespace, persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+|shard\\\\d+-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+)|configsvr-\\\\d+|mongos-\\\\d+)\",namespace=~\"$namespace\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2559,7 +2559,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(kubelet_volume_stats_used_bytes{} / on(persistentvolumeclaim) group_left(pod) (kubelet_volume_stats_capacity_bytes{} + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+|shard\\\\d+-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+)|configsvr-\\\\d+|mongos-\\\\d+)\",namespace=~\"$namespace\"}) )* 100",
+          "expr": "(kubelet_volume_stats_used_bytes{} / on(namespace, persistentvolumeclaim) group_left(pod) (kubelet_volume_stats_capacity_bytes{} + on(namespace, persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+|shard\\\\d+-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+)|configsvr-\\\\d+|mongos-\\\\d+)\",namespace=~\"$namespace\"}) )* 100",
           "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -2643,7 +2643,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(kubelet_volume_stats_used_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+|shard\\\\d+-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+)|configsvr-\\\\d+|mongos-\\\\d+)\",namespace=~\"$namespace\"}) ",
+          "expr": "(kubelet_volume_stats_used_bytes + on(namespace, persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+|shard\\\\d+-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+)|configsvr-\\\\d+|mongos-\\\\d+)\",namespace=~\"$namespace\"}) ",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
