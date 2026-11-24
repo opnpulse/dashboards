@@ -1197,7 +1197,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_memory_working_set_bytes{namespace=\"$namespace\", pod=~\"$app-leaf-\\\\d+$|$app-aggregator-\\\\d+$|$app-\\\\d+$\",container!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=~\"$app-leaf-\\\\d+$|$app-aggregator-\\\\d+$|$app-\\\\d+$\",container!=\"\", image!=\"\"}) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
