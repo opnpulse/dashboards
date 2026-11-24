@@ -1326,5 +1326,6 @@
     "to": "now"
   },
   "timepicker": {},
-  "title": "KubeDB / Qdrant / Database"
+  "title": "KubeDB / Qdrant / Database",
+  "uid": "kubedb-qdrant-database"
 }

@@ -2709,5 +2709,6 @@
   },
   "timezone": "",
   "title": "KubeDB / MongoDB / Summary",
+  "uid": "kubedb-mongodb-summary-legacy",
   "version": 3
 }

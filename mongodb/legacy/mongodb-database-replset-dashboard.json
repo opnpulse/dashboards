@@ -1371,5 +1371,6 @@
   },
   "timezone": "browser",
   "title": "KubeDB / MongoDB / Database / ReplicaSet",
+  "uid": "kubedb-mongodb-database-replset-legacy",
   "version": 2
 }

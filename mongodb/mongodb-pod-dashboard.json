@@ -1937,5 +1937,6 @@
   },
   "timezone": "browser",
   "title": "KubeDB / MongoDB / Pod",
+  "uid": "kubedb-mongodb-pod",
   "version": 12
 }

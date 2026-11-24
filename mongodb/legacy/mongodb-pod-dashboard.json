@@ -1928,5 +1928,6 @@
   },
   "timezone": "browser",
   "title": "KubeDB / MongoDB / Pod",
+  "uid": "kubedb-mongodb-pod-legacy",
   "version": 12
 }
