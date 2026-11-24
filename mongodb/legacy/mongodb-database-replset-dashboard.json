@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "${datasource}",
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "#6ed0e0",
@@ -1371,5 +1374,6 @@
   },
   "timezone": "browser",
   "title": "KubeDB / MongoDB / Database / ReplicaSet",
+  "uid": "kubedb-mongodb-database-replset-legacy",
   "version": 2
 }

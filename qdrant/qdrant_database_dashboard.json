@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "${datasource}",
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -527,7 +530,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(sum by(namespace,pod,container)(irate(container_cpu_usage_seconds_total{image!=\"\",job=\"kubelet\",metrics_path=\"/metrics/cadvisor\",namespace=\"$namespace\", pod=~\"$app-aggregator-\\\\d+$|$app-leaf-\\\\d+$|$app-\\\\d+$\"}[5m]))* on (namespace, pod) group_left (node) topk by (namespace, pod) (1, max by (namespace, pod, node) (kube_pod_info{node!=\"\",namespace=\"$namespace\", pod=~\"$app-aggregator-\\\\d+$|$app-leaf-\\\\d+$|$app-\\\\d+$\"}))) by (pod)",
+          "expr": "sum(sum by(namespace,pod,container)(irate(container_cpu_usage_seconds_total{image!=\"\",namespace=\"$namespace\", pod=~\"$app-aggregator-\\\\d+$|$app-leaf-\\\\d+$|$app-\\\\d+$\"}[5m]))* on (namespace, pod) group_left (node) topk by (namespace, pod) (1, max by (namespace, pod, node) (kube_pod_info{node!=\"\",namespace=\"$namespace\", pod=~\"$app-aggregator-\\\\d+$|$app-leaf-\\\\d+$|$app-\\\\d+$\"}))) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -1326,5 +1329,6 @@
     "to": "now"
   },
   "timepicker": {},
-  "title": "KubeDB / Qdrant / Database"
+  "title": "KubeDB / Qdrant / Database",
+  "uid": "kubedb-qdrant-database"
 }

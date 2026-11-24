@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "${datasource}",
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -1111,7 +1114,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "irate(pg_stat_bgwriter_buffers_backend{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
+          "expr": "irate(pg_stat_bgwriter_buffers_backend_total{pod=\"$pod\", namespace=\"$namespace\"}[5m]) or irate(pg_stat_bgwriter_buffers_backend{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1120,7 +1123,7 @@
         },
         {
           "exemplar": false,
-          "expr": "irate(pg_stat_bgwriter_buffers_alloc{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
+          "expr": "irate(pg_stat_bgwriter_buffers_alloc_total{pod=\"$pod\", namespace=\"$namespace\"}[5m]) or irate(pg_stat_bgwriter_buffers_alloc{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1129,7 +1132,7 @@
         },
         {
           "exemplar": false,
-          "expr": "irate(pg_stat_bgwriter_buffers_backend_fsync{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
+          "expr": "irate(pg_stat_bgwriter_buffers_backend_fsync_total{pod=\"$pod\", namespace=\"$namespace\"}[5m]) or irate(pg_stat_bgwriter_buffers_backend_fsync{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1138,7 +1141,7 @@
         },
         {
           "exemplar": false,
-          "expr": "irate(pg_stat_bgwriter_buffers_checkpoint{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
+          "expr": "irate(pg_stat_bgwriter_buffers_checkpoint_total{pod=\"$pod\", namespace=\"$namespace\"}[5m]) or irate(pg_stat_bgwriter_buffers_checkpoint{pod=\"$pod\", namespace=\"$namespace\"}[5m]) or irate(pg_stat_checkpointer_buffers_written_total{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1147,7 +1150,7 @@
         },
         {
           "exemplar": false,
-          "expr": "irate(pg_stat_bgwriter_buffers_clean{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
+          "expr": "irate(pg_stat_bgwriter_buffers_clean_total{pod=\"$pod\", namespace=\"$namespace\"}[5m]) or irate(pg_stat_bgwriter_buffers_clean{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1563,7 +1566,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "irate(pg_stat_bgwriter_checkpoint_write_time{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
+          "expr": "irate(pg_stat_bgwriter_checkpoint_write_time_total{pod=\"$pod\", namespace=\"$namespace\"}[5m]) or irate(pg_stat_bgwriter_checkpoint_write_time{pod=\"$pod\", namespace=\"$namespace\"}[5m]) or irate(pg_stat_checkpointer_write_time_total{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1572,7 +1575,7 @@
         },
         {
           "exemplar": false,
-          "expr": "irate(pg_stat_bgwriter_checkpoint_sync_time{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
+          "expr": "irate(pg_stat_bgwriter_checkpoint_sync_time_total{pod=\"$pod\", namespace=\"$namespace\"}[5m]) or irate(pg_stat_bgwriter_checkpoint_sync_time{pod=\"$pod\", namespace=\"$namespace\"}[5m]) or irate(pg_stat_checkpointer_sync_time_total{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,

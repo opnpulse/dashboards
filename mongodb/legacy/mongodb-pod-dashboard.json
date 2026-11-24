@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "${datasource}",
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "#6ed0e0",
@@ -1928,5 +1931,6 @@
   },
   "timezone": "browser",
   "title": "KubeDB / MongoDB / Pod",
+  "uid": "kubedb-mongodb-pod-legacy",
   "version": 12
 }

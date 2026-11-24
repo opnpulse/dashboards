@@ -1653,5 +1653,6 @@
       "30d"
     ]
   },
-  "title": "KubeDB / Qdrant / Pod"
+  "title": "KubeDB / Qdrant / Pod",
+  "uid": "kubedb-qdrant-pod"
 }
